@@ -5,7 +5,7 @@ from flask import session, redirect, url_for
 from app import db
 from app.models.Catalogs import Catalogs
 
-def login_required(required_fields=None):
+def login_required(catagory_id=None, item_id=None):
     def decorator(func):
         @functools.wraps(func)
         def login_required_wrapper(*args, **kwargs):

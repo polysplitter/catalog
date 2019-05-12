@@ -10,7 +10,7 @@
                     {% if catagories %}
                     {% for i in catagories %}
                     <div class="btn-group mb-1">
-                        <a href="#"
+                        <a href="{{url_for('read_items.get_items', catagory_id=i.id)}}"
                             class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
                             {{i['name']}}
                             <span class="badge badge-danger badge-pill">Items: {{i.id | count }}</span>

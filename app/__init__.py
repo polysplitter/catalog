@@ -26,6 +26,10 @@ from app.module_home.home_controller import mod_home
 from app.module_home.create_catagory_controller import mod_create_catagory
 from app.module_home.edit_catagory_controller import mod_edit_catagory
 from app.module_home.delete_catagory_controller import mod_delete_catagory
+from app.module_items.read_items_controller import mod_read_items
+from app.module_items.create_items_controller import mod_create_items
+from app.module_items.edit_items_controller import mod_edit_items
+from app.module_items.delete_items_controller import mod_delete_items
 
 # Register blueprint(s)
 app.register_blueprint(mod_login)
@@ -33,6 +37,10 @@ app.register_blueprint(mod_home)
 app.register_blueprint(mod_create_catagory)
 app.register_blueprint(mod_edit_catagory)
 app.register_blueprint(mod_delete_catagory)
+app.register_blueprint(mod_read_items)
+app.register_blueprint(mod_create_items)
+app.register_blueprint(mod_edit_items)
+app.register_blueprint(mod_delete_items)
 
 
 # jinja env filters

@@ -9,7 +9,7 @@ from app.models.Item import Item
 
 
 # Defines the blueprint: 'create', set its prefix: app.url/catagory
-mod_create_catagory = Blueprint('/create', __name__, url_prefix='/catagory')
+mod_create_catagory = Blueprint('create', __name__, url_prefix='/catagory')
 
 
 # create catalog
