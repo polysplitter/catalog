@@ -21,12 +21,18 @@ from app.models.Item import Item
 
 
 # Import a module / component using its blueprint handler variable (mod_auth)
-from app.module_login.login_controller import mod_login as login_module
-from app.module_home.home_controller import mod_home as home_module
+from app.module_login.login_controller import mod_login
+from app.module_home.home_controller import mod_home
+from app.module_home.create_catagory_controller import mod_create_catagory
+from app.module_home.edit_catagory_controller import mod_edit_catagory
+from app.module_home.delete_catagory_controller import mod_delete_catagory
 
 # Register blueprint(s)
-app.register_blueprint(login_module)
-app.register_blueprint(home_module)
+app.register_blueprint(mod_login)
+app.register_blueprint(mod_home)
+app.register_blueprint(mod_create_catagory)
+app.register_blueprint(mod_edit_catagory)
+app.register_blueprint(mod_delete_catagory)
 
 
 # jinja env filters

@@ -9,13 +9,13 @@ from app.models.Catalogs import Catalogs
 from app.models.Item import Item
 
 
-# Defines the blueprint: 'login', set its prefix: app.url/login
-mod_home = Blueprint('/', __name__, url_prefix='/')
+# Defines the blueprint: 'home', set its prefix: app.url/
+mod_home = Blueprint('home', __name__, url_prefix='/')
 
 
 # read catalog request
 @mod_home.route('/', methods=['GET'])
-@login_required
+@login_required()
 def home():
     """get the home page"""
 

@@ -10,7 +10,7 @@
                     {% if catagories %}
                     {% for i in catagories %}
                     <div class="btn-group mb-1">
-                        <a href="{{url_for('get_items', catagory_id=i.id)}}"
+                        <a href="#"
                             class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
                             {{i['name']}}
                             <span class="badge badge-danger badge-pill">Items: {{i.id | count }}</span>
@@ -75,7 +75,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url_for('edit_catagory', catagory_id=i.id)}}" method='POST'>
+                <form action="{{url_for('edit.edit_catagory', catagory_id=i.id)}}" method='POST'>
                     <div class="form-group">
                         <input type="text" class='form-control' name='name' placeholder="{{i.name}}">
                     </div>
@@ -98,7 +98,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url_for('delete_catagory', catagory_id=i.id)}}" method='POST'>
+                <form action="{{url_for('delete.delete_catagory', catagory_id=i.id)}}" method='POST'>
                     <div class="form-group">
                         <button class="btn btn-outline-danger btn-block btn-lg" type="submit">Delete</button>
                     </div>
