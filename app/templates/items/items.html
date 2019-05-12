@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id='items-section'>
+    <div class="container">
+        <h3>{{catagory.name}}</h3>
+        <div class="row">
+            {% if items %}
+            {% for i in items %}
+            <div class="col-sm-3 text-center">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h3>{{i.name}}</h3>
+                        <p>{{i.description}}</p>
+                        <div class="btn-group mb-1 text-center">
+                            <button class="btn btn-secondary" data-toggle='modal' data-target='#editItem{{i.id}}'">Edit</button>
+                        <button class=" btn btn-danger" data-toggle='modal' data-target='#deleteItem{{i.id}}'">Delete</button>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>There are currently no items.</p>
+                {% endif %}
+            </div>
+        </div>
+    <div class=" text-center mt-4">
+        <button class="btn btn-primary" data-toggle='modal'data-target='#createItem{{catagory.id}}'>Create Item</button>
+    </div>
+</section>
+
+<div class="modal fade text-dark" id='createItem{{catagory.id}}'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Item</h5>
+                <button class="close" data-dismiss='modal'>
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url_for('create_item', catagory_id=catagory.id)}}" method='POST'>
+                    <div class="form-group">
+                        <input type="text" class='form-control' maxlength="200" name='name' placeholder="item">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control rounded-0" maxlength="299" name='description'
+                            id="exampleFormControlTextarea2" rows="3" placeholder="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-primary btn-block btn-lg" type="submit">Create Item</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for i in items %}
+<div class="modal fade text-dark" id='editItem{{i.id}}'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Item</h5>
+                <button class="close" data-dismiss='modal'>
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url_for('edit_item', catagory_id=i.catalog_id, item_id=i.id)}}" method='POST'>
+                    <div class="form-group">
+                        <input type="text" class='form-control' name='name' placeholder="{{i.name}}">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-secondary btn-block btn-lg" type="submit">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade text-dark" id='deleteItem{{i.id}}'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Item {{i.name}}</h5>
+                <button class="close" data-dismiss='modal'>
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url_for('delete_item', catagory_id=i.catalog_id, item_id=i.id)}}" method='POST'>
+                    <div class="form-group">
+                        <button class="btn btn-outline-danger btn-block btn-lg" type="submit">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

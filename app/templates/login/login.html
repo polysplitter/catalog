@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+    <script>
+        function start() {
+            gapi.load('auth2', function () {
+                auth2 = gapi.auth2.init({
+                    client_id: '432619588633-ubkv87sjmcm37h5o2dfak25s9okb61as.apps.googleusercontent.com'
+                });
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="primary-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card text-center">
+                        <div class="card-header">Item Catalog</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Welcome!</h5>
+                            <p class="card-text">Please use google to sign in</p>
+                            <button class='btn btn-outline-primary btn-lg' id="signinButton">Google Signin</button>
+                            <div id="result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#signinButton').click(function () {
+            function signInCallback(authResult) {
+                if (authResult['code']) {
+                    $('#signinButton').attr('style', 'display: none');
+                    $.ajax({
+                        type: 'POST',
+                        url: '/login/gconnect?state={{STATE}}',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        contentType: 'application/octet-stream; charset=utf-8',
+                        success: function (result) {
+                            $('#result').html(result)
+                            setTimeout(function () {
+                                window.location.href = "/";
+                            }, 2000);
+                        },
+                        processData: false,
+                        data: authResult['code']
+                    });
+                } else {
+                    // handle error
+                    console.log('There was an error: ' + authResult['error']);
+                    $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                }
+            }
+            auth2.grantOfflineAccess().then(signInCallback);
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

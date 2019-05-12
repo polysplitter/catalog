@@ -1,0 +1,12 @@
+body {
+    padding-top: 150px;
+}
+  
+.navbar {
+    opacity: 0.9;
+    background: #333; 
+}
+.navbar .nav-item {
+    font-size: 1.4rem;
+    padding-right: 1.4rem; 
+}
