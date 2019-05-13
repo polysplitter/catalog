@@ -25,7 +25,8 @@ def validate_catagory(catagory_id=None):
         @wraps(func)
         def validate_catagory_wrapper(*args, **kwargs):
             catagory_id = kwargs['catagory_id']
-            catagory = db.session.query(Catalogs).filter_by(id=catagory_id).one_or_none()
+            catagory = db.session.query(Catalogs).filter_by(
+                                        id=catagory_id).one_or_none()
             if catagory is None:
                 return abort(404)
             else:
@@ -40,7 +41,8 @@ def validate_items(catagory_id=None, item_id=None):
         def validate_catagory_wrapper(*args, **kwargs):
             catagory_id = kwargs['catagory_id']
             item_id = kwargs['item_id']
-            catagory = db.session.query(Catalogs).filter_by(id=catagory_id).one_or_none()
+            catagory = db.session.query(Catalogs).filter_by(
+                                        id=catagory_id).one_or_none()
             item = db.session.query(Item).filter_by(id=item_id).one_or_none()
             if catagory is None and item is None:
                 return abort(404)

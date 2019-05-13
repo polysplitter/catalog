@@ -5,6 +5,7 @@ from app import db
 from app.models.Guest import Guest
 from app.models.Catalogs import Catalogs
 
+
 class Item(db.Model):
     """Stores Item info"""
     __tablename__ = 'item'

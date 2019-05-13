@@ -17,6 +17,7 @@ app.config.from_object('config')
 # by modules and controllers
 db = SQLAlchemy(app)
 
+# required to pull this after app and db have been created.
 from app.models.Guest import Guest
 from app.models.Catalogs import Catalogs
 from app.models.Item import Item

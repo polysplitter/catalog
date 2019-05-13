@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from flask import Flask, Blueprint, request, render_template, session, redirect, url_for
+from flask import Flask, Blueprint, request, render_template, \
+                  session, redirect, url_for
 
 from app import db
 from app.wrappers import login_required
@@ -10,8 +11,10 @@ from app.models.Catalogs import Catalogs
 from app.models.Item import Item
 
 
-# Defines the blueprint: 'create_items', set its prefix: app.url//catagory/<int:catagory_id>/
-mod_create_items = Blueprint('create_items', __name__, url_prefix='/catagory/<int:catagory_id>/')
+# blueprint: 'create_items', prefix: app.url//catagory/<int:catagory_id>/
+mod_create_items = Blueprint('create_items',
+                             __name__,
+                             url_prefix='/catagory/<int:catagory_id>/')
 
 
 # create item for catalog
@@ -24,7 +27,8 @@ def create_item(catagory_id):
     description = request.form.get('description')
 
     if name == '' or description == '':
-        return redirect(url_for('read_items.get_items', catagory_id=catagory_id))
+        return redirect(url_for('read_items.get_items',
+                                catagory_id=catagory_id))
 
     item = Item(name=name,
                 description=description,

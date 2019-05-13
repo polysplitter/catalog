@@ -2,6 +2,7 @@
 
 from app import db
 
+
 class Guest(db.Model):
     """Stores user info"""
     __tablename__ = 'guest'

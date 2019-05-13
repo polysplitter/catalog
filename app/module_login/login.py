@@ -100,5 +100,6 @@ def createUser(login_session):
                       picture=login_session['picture'])
     db.session.add(new_guest)
     db.session.commit()
-    user = db.session.query(Guest).filter_by(email=login_session['email']).one()
+    user = db.session.query(Guest).filter_by(
+                            email=login_session['email']).one()
     return user.id

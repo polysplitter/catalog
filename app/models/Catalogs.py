@@ -3,6 +3,7 @@
 from app import db
 from app.models.Guest import Guest
 
+
 class Catalogs(db.Model):
     """Stores Catalog info"""
     __tablename__ = 'catalogs'

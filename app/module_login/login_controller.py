@@ -2,7 +2,8 @@
 
 import random
 import string
-from flask import Flask, Blueprint, request, render_template, session, redirect, url_for
+from flask import Flask, Blueprint, request, render_template, \
+                  session, redirect, url_for
 
 from app import db
 
@@ -13,6 +14,7 @@ from app.module_login.login import Connect
 
 # Defines the blueprint: 'login', set its prefix: app.url/login
 mod_login = Blueprint('login', __name__, url_prefix='/login')
+
 
 # Create a state token to prevent request forgery.
 # Store it in the session for later validation.

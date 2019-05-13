@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from flask import Flask, Blueprint, request, render_template, session, redirect, url_for
+from flask import Flask, Blueprint, request, render_template, \
+                  session, redirect, url_for
 
 from app import db
 from app.wrappers import login_required
@@ -23,7 +24,7 @@ def create_catagory():
     name = request.form.get('name')
     guest_id = session['guest_id']
     exists = db.session.query(Catalogs).filter_by(name=name,
-                                               guest_id=guest_id).scalar()
+                                                  guest_id=guest_id).scalar()
     if exists:
         return redirect(url_for('home.home'))
 
