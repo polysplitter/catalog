@@ -13,7 +13,7 @@
                         <h3>{{i.name}}</h3>
                         <p>{{i.description}}</p>
                         <div class="btn-group mb-1 text-center">
-                        {% if session['guest_id'] == i.guest_id %}
+                        {% if session['guest_id'] == i.guest_id and session['guest_id'] == catagory.guest_id %}
                         <button class="btn btn-secondary" data-toggle='modal' data-target='#editItem{{i.id}}'">Edit</button>
                         <button class=" btn btn-danger" data-toggle='modal' data-target='#deleteItem{{i.id}}'">Delete</button>
                         {% endif %}
@@ -28,7 +28,9 @@
             </div>
         </div>
     <div class=" text-center mt-4">
+        {% if session['guest_id'] == catagory.guest_id %}
         <button class="btn btn-primary" data-toggle='modal'data-target='#createItem{{catagory.id}}'>Create Item</button>
+        {% endif %}
     </div>
 </section>
 
