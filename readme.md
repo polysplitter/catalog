@@ -17,8 +17,6 @@ This is an Item catalog where you can create catagories, then add items to each 
 
 ## Authentication
 
- `While this is under review This repo will provide a temperary client_secrets.json` 
-
 To use this application you will need to go to https://console.developers.google.com
 * create an OAuth 2.0 client id.
 * setup the redirect urls and authorized javascript origins
