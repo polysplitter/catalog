@@ -20,19 +20,19 @@ mod_json_endpoints = Blueprint('json',
 # json get all catagories
 @mod_json_endpoints.route('/JSON')
 def get_all_catagories():
-    catagories = session.query(Catalogs).all()
+    catagories = db.session.query(Catalogs).all()
     return jsonify(Catalogs=[c.serialize for c in catagories])
 
 
 # json get all items
 @mod_json_endpoints.route('/items/JSON')
 def get_all_items():
-    items = session.query(Item).all()
+    items = db.session.query(Item).all()
     return jsonify(Item=[i.serialize for i in items])
 
 
 # json get all items for a catagory
 @mod_json_endpoints.route('/<int:catagory_id>/items/JSON')
 def get_all_items_for_catagory(catagory_id):
-    items = session.query(Item).filter_by(catalog_id=catagory_id).all()
+    items = db.session.query(Item).filter_by(catalog_id=catagory_id).all()
     return jsonify(Item=[i.serialize for i in items])
