@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # New Imports for login
 from flask import session as login_session
 from flask import request

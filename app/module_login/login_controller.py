@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import random
 import string
 from flask import Flask, Blueprint, request, render_template, session, redirect, url_for

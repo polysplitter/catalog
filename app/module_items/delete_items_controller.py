@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from flask import Flask, Blueprint, request, render_template, session, redirect, url_for
 
 from app import db

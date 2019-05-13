@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import httplib2
 import json
 from flask import make_response, redirect, url_for, session

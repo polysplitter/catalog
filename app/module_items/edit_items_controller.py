@@ -5,8 +5,9 @@ from app.wrappers import login_required, validate_items
 
 from app.models.Guest import Guest
 from app.models.Catalogs import Catalogs
-from app.models.Item import Item
+#!/usr/bin/env python3
 
+from app.models.Item import Item
 
 # Defines the blueprint: 'edit_items', set its prefix: app.url//catagory/<int:catagory_id>/
 mod_edit_items = Blueprint('edit_items', __name__, url_prefix='/catagory/<int:catagory_id>/')

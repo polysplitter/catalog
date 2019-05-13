@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 from functools import wraps
 
@@ -47,4 +48,3 @@ def validate_items(catagory_id=None, item_id=None):
                 return func(*args, **kwargs)
         return validate_catagory_wrapper
     return decorator
-

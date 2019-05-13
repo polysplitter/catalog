@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from app import db
 from app.models.Guest import Guest
 
