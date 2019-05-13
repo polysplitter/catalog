@@ -13,8 +13,10 @@
                         <h3>{{i.name}}</h3>
                         <p>{{i.description}}</p>
                         <div class="btn-group mb-1 text-center">
-                            <button class="btn btn-secondary" data-toggle='modal' data-target='#editItem{{i.id}}'">Edit</button>
+                        {% if session['guest_id'] == i.guest_id %}
+                        <button class="btn btn-secondary" data-toggle='modal' data-target='#editItem{{i.id}}'">Edit</button>
                         <button class=" btn btn-danger" data-toggle='modal' data-target='#deleteItem{{i.id}}'">Delete</button>
+                        {% endif %}
                     </div>
                     </div>
                   </div>

@@ -19,4 +19,4 @@ def get_items(catagory_id):
 
     catagory = db.session.query(Catalogs).filter_by(id=catagory_id).one()
     items = db.session.query(Item).filter_by(catalog_id=catagory_id).all()
-    return render_template('items/items.html', catagory=catagory, items=items)
+    return render_template('items/items.html', catagory=catagory, items=items, session=session)

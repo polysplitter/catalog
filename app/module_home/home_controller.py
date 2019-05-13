@@ -21,4 +21,4 @@ def home():
 
     catagories = db.session.query(Catalogs).all()
     now = datetime.datetime.now()
-    return render_template('home/home.html', catagories=catagories, now=now)
+    return render_template('home/home.html', catagories=catagories, now=now, session=session)

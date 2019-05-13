@@ -48,15 +48,3 @@ def validate_items(catagory_id=None, item_id=None):
         return validate_catagory_wrapper
     return decorator
 
-def validate_user_has_access(catagory_id=None, item_id=None):
-    def decorator(func):
-        @wraps(func)
-        def validate_user_has_access_wrapper(*args, **kwargs):
-            if kwargs['catagory_id']:
-                catagory_id = kwargs['catagory_id']
-            if kwargs['item_id']:
-                item_id = kwargs['item_id']
-            return func(*args, **kwargs)
-        return validate_user_has_access_wrapper
-    return decorator
-

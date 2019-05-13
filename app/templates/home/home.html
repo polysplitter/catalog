@@ -15,8 +15,10 @@
                             {{i['name']}}
                             <span class="badge badge-danger badge-pill">Items: {{i.id | count }}</span>
                         </a>
+                        {% if session['guest_id'] == i.guest_id%}
                         <button class="btn btn-secondary" data-toggle='modal' data-target='#editCatagory{{i.id}}'">Edit</button>
                         <button class="btn btn-danger" data-toggle='modal' data-target='#deleteCatagory{{i.id}}'">Delete</button>
+                        {% endif %}
                     </div>
 
                     {% endfor %}
