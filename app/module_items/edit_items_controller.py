@@ -27,6 +27,8 @@ def edit_item(catagory_id, item_id):
     item = db.session.query(Item).filter_by(catalog_id=catagory_id,
                                             id=item_id).one()
     name = request.form.get('name')
+    if name == '':
+        return redirect(url_for('read_items.get_items'))
     oldname = item.name
     item.name = name
     db.session.add(item)

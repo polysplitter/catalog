@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, Blueprint, request, render_template, \
-                  session, redirect, url_for, flash
+                  session, redirect, url_for, flash, abort
 
 from app import db
 from app.wrappers import login_required, validate_catagory
@@ -27,7 +27,7 @@ def edit_catagory(catagory_id):
     exists = db.session.query(Catalogs).filter_by(name=name,
                                                   guest_id=guest_id).scalar()
     if exists:
-        return redirect(url_for('home.home'))
+        return abort(404)
 
     if name == '':
         return redirect(url_for('home.home'))
