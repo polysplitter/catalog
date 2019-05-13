@@ -124,5 +124,5 @@ dmypy.json
 
 # vscode
 .vscode
-# client_secrets.json
+client_secrets.json
 catalog.db
