@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, Blueprint, request, render_template, \
-                  session, redirect, url_for
+                  session, redirect, url_for, flash
 
 from app import db
 from app.wrappers import login_required, validate_items
@@ -27,6 +27,9 @@ def delete_item(catagory_id, item_id):
 
     item = db.session.query(Item).filter_by(catalog_id=catagory_id,
                                             id=item_id).one()
+    name = item.name
     db.session.delete(item)
     db.session.commit()
+    flash(f"{name} item has been deleted")
+
     return redirect(url_for('read_items.get_items', catagory_id=catagory_id))

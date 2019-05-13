@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, Blueprint, request, render_template, \
-                  session, redirect, url_for
+                  session, redirect, url_for, flash
 
 from app import db
 from app.wrappers import login_required, validate_catagory
@@ -23,7 +23,15 @@ def delete_catagory(catagory_id):
     """delete catagory"""
 
     catagory = db.session.query(Catalogs).filter_by(id=catagory_id).one()
+    items = db.session.query(Item).filter_by(catalog_id=catagory_id).all()
+    for item in items:
+        flash(f"{item.name} item has been deleted")
+        db.session.delete(item)
+        db.session.commit()
+
+    name = catagory.name
     db.session.delete(catagory)
     db.session.commit()
+    flash(f"Catagory {name} has been deleted")
 
     return redirect(url_for('home.home'))

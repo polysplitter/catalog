@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, Blueprint, request, render_template, \
-                  session, redirect, url_for
+                  session, redirect, url_for, flash
 
 from app import db
 from app.wrappers import login_required
@@ -35,4 +35,6 @@ def create_catagory():
                            guest_id=session['guest_id'])
     db.session.add(new_catalog)
     db.session.commit()
+    flash(f"Catagory {name} has been created!")
+
     return redirect(url_for('home.home'))

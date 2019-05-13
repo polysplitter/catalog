@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, Blueprint, request, render_template, \
-                  session, redirect, url_for
+                  session, redirect, url_for, flash
 
 from app import db
 from app.wrappers import login_required
@@ -37,5 +37,6 @@ def create_item(catagory_id):
 
     db.session.add(item)
     db.session.commit()
+    flash(f"{name} item has been created.")
 
     return redirect(url_for('read_items.get_items', catagory_id=catagory_id))

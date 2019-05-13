@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, Blueprint, request, render_template, \
-                  session, redirect, url_for
+                  session, redirect, url_for, flash
 
 from app import db
 from app.wrappers import login_required, validate_catagory
@@ -33,8 +33,10 @@ def edit_catagory(catagory_id):
         return redirect(url_for('home.home'))
 
     catagory = db.session.query(Catalogs).filter_by(id=catagory_id).one()
+    oldname = catagory.name
     catagory.name = name
     db.session.add(catagory)
     db.session.commit()
+    flash(f"Catagory {oldname} has been updated to {catagory.name}")
 
     return redirect(url_for('home.home'))
