@@ -33,6 +33,7 @@ from app.module_items.read_items_controller import mod_read_items
 from app.module_items.create_items_controller import mod_create_items
 from app.module_items.edit_items_controller import mod_edit_items
 from app.module_items.delete_items_controller import mod_delete_items
+from app.module_json.json_endpoints_controller import mod_json_endpoints
 
 # Register blueprint(s)
 app.register_blueprint(mod_login)
@@ -44,6 +45,7 @@ app.register_blueprint(mod_read_items)
 app.register_blueprint(mod_create_items)
 app.register_blueprint(mod_edit_items)
 app.register_blueprint(mod_delete_items)
+app.register_blueprint(mod_json_endpoints)
 
 
 # jinja env filters
