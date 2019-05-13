@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, request, render_template, session, redirect, url_for
 
 from app import db
-from app.wrappers import login_required
+from app.wrappers import login_required, validate_items
 
 from app.models.Guest import Guest
 from app.models.Catalogs import Catalogs
@@ -16,6 +16,7 @@ mod_edit_items = Blueprint('edit_items', __name__, url_prefix='/catagory/<int:ca
 @mod_edit_items.route('/items/<int:item_id>/edit',
            methods=['POST'])
 @login_required()
+@validate_items()
 def edit_item(catagory_id, item_id):
     """edit an item for a catagory"""
 

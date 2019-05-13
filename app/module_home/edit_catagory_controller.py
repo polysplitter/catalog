@@ -2,7 +2,7 @@
 from flask import Flask, Blueprint, request, render_template, session, redirect, url_for
 
 from app import db
-from app.wrappers import login_required
+from app.wrappers import login_required, validate_catagory
 
 from app.models.Guest import Guest
 from app.models.Catalogs import Catalogs
@@ -16,6 +16,7 @@ mod_edit_catagory = Blueprint('edit', __name__, url_prefix='/catagory')
 # edit catalog
 @mod_edit_catagory.route('/<int:catagory_id>/edit', methods=['POST'])
 @login_required()
+@validate_catagory()
 def edit_catagory(catagory_id):
     """edit catagory"""
 
